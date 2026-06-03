@@ -55,12 +55,12 @@ int main(){
                 printf("Hmmphm.. Este número não é primo... Tentas mais uma vez...\n");
                 i--;
                 }
-            
+        }
             
             
 
         //Segunda leitura (Completamente análoga à primeira).
-        else if (i==1){
+        else if(i==1){
             scanf("%llu", &entrada2);
             
             if(entrada1<100000){
@@ -76,9 +76,5 @@ int main(){
             
             }
         }
-    }
-
     printf("%llu %llu", entrada1, entrada2);
-
-
 }
