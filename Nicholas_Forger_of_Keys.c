@@ -22,12 +22,31 @@ bool primo_check(unsigned long long int n){
 
 }
 
+//Função para obter o mdc entre dois números
+int mdc(int a, int b){
+
+    //Antes de qualquer coisa, ordernar as variáveis
+    if (b>a){
+        //Criação de variável efêmera para me auxiliar nesta tarefa
+        int t=a;
+    
+        a=b;
+        b=t;
+    }
+
+    while (a%b!=0){
+        mdc(b,a%b);
+    }
+
+}
+
 
 
 
 
 int main(){
 
+    int expoente;
     unsigned long long int entrada1, entrada2; //Ao usar unsigned, esta variável expande sua capacidade de representar grandes números positivos, em detrimento de sua capacidade de representar números negativos. 
 
     //Diálogo de Nicholas.
@@ -75,6 +94,20 @@ int main(){
             
             
             }
+        }//Fim do loop de leitura para entrada1 e entrada2
+
+        printf("Muito bom... Agora, eu gostaria de um número que fosse primo em relação aos produto dos dois números anteriores subtraídos de 1...\n");
+        scanf("%d", &expoente);
+
+        //Invocar função mdc para verificar se o expoente é primo em relação a (entrada1-1)(entrada2-1)
+        while(mdc(expoente, (entrada1-1)*(entrada2-1))!=1){
+
+            //Try again
+            printf("Não não... este não satisfaz meu pedido... Tente outro...\n");
+            scanf("%d", &expoente);
+
+
         }
-    printf("%llu %llu", entrada1, entrada2);
+
+
 }
