@@ -23,12 +23,12 @@ bool primo_check(unsigned long long int n){
 }
 
 //Função para obter o mdc entre dois números
-int mdc(int a, int b){
+unsigned long long int mdc(unsigned long long int a, unsigned long long int b){
 
     //Antes de qualquer coisa, ordernar as variáveis
     if (b>a){
         //Criação de variável efêmera para me auxiliar nesta tarefa
-        int t=a;
+        unsigned long long int t=a;
     
         a=b;
         b=t;
@@ -37,7 +37,7 @@ int mdc(int a, int b){
     //Qualquer número divide 0
     if (b==0)return a;
     if (a==b)return a;
-
+    return mdc(b, a % b); // chamada recursiva para o algoritimo de euclides
 }
 
 /*______________________________________________________________________Função Main 
