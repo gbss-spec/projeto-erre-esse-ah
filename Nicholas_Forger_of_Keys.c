@@ -34,15 +34,18 @@ int mdc(int a, int b){
         b=t;
     }
 
-    while (a%b!=0){
-        mdc(b,a%b);
-    }
+    //Qualquer número divide 0
+    if (b==0)return a;
+    if (a==b)return a;
 
 }
 
-
-
-
+/*______________________________________________________________________Função Main 
+⠀     ⡄⠀⢻⡄⢠⡛⠀⢠⠀⠀⠀⠀
+⠀⠀⠀  ⠘⣧⠸⠇⠸⠇⣼⠃⠀⠀⠀⠀
+⠀⠘⠶⠶⡄⣠⣶⣿⣿⣶⣄⢠⠶⠶⠃⠀
+⠰⠶⣤⡄⣼⣿⣿⣿⣿⣿⣿⣧⢠⣤⠶⠆
+*/
 
 int main(){
 
@@ -111,3 +114,7 @@ int main(){
 
 
 }
+
+
+
+//Eu travei na parte de gerar as chaves públicas. Vou pesquisar. 
