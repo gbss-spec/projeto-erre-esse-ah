@@ -49,7 +49,7 @@ unsigned long long int mdc(unsigned long long int a, unsigned long long int b){
 
 int main(){
 
-    unsigned long long int entrada1, entrada2, expoente; //Ao usar unsigned, esta variável expande sua capacidade de representar grandes números positivos, em detrimento de sua capacidade de representar números negativos. 
+    unsigned long long int entrada1, entrada2, expoente, n; //Ao usar unsigned, esta variável expande sua capacidade de representar grandes números positivos, em detrimento de sua capacidade de representar números negativos. 
 
     //Diálogo de Nicholas.
     printf("Bem vindo, filho... Há algo que queiras proteger? Conta-me sobre números interessantes e dar-te-ei trancas em que podes confiar...\n");
@@ -115,9 +115,12 @@ int main(){
 
         }
         printf("Otimo! Esse numero satisfaz a condição que te pedi...\n");
-
+        printf("hmmmm... agora já podemos obter nossao chave publica... Deixe-me ver aqui...\n");
+        /** A chave publica é o par (n, e)
+         * n é o produto p*q
+         * 'e' é o expoente relativamente primo a (p-1)(q-1) que já foi dado
+         * fonte: aplicação a teoria do numero - slide do professor de MD / pag. 55
+         */
+        n = entrada1*entrada2;
+        printf("com o numeros que você me deu parece que nossa chave publeca vai ser: \n( %llu, %llu)\n", n, expoente);
 }
-
-
-
-//Eu travei na parte de gerar as chaves públicas. Vou pesquisar. 
