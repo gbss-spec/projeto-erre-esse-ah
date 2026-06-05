@@ -49,7 +49,7 @@ unsigned long long int mdc(unsigned long long int a, unsigned long long int b){
 
 int main(){
 
-    unsigned long long int entrada1, entrada2, expoente, n; //Ao usar unsigned, esta variável expande sua capacidade de representar grandes números positivos, em detrimento de sua capacidade de representar números negativos. 
+    unsigned long long int entrada1, entrada2, expoente, n, d; //Ao usar unsigned, esta variável expande sua capacidade de representar grandes números positivos, em detrimento de sua capacidade de representar números negativos. 
 
     //Diálogo de Nicholas.
     printf("Bem vindo, filho... Há algo que queiras proteger? Conta-me sobre números interessantes e dar-te-ei trancas em que podes confiar...\n");
@@ -123,4 +123,13 @@ int main(){
          */
         n = entrada1*entrada2;
         printf("com o numeros que você me deu parece que nossa chave publeca vai ser: \n( %llu, %llu)\n", n, expoente);
+
+        printf("humhmmmm....  vamos ver agora comoficaria nossa chave privada...\n");
+        printf("deixe-me calcular aqui... vamos ver...\n");
+        // adcionar aqui a chave privada
+        // ela é formada por 'd'
+        // d deve ser o inverso modular de 'expoente mod (p-1)(q-1)'
+        // fonte: aplicação a teoria do numero - slide do professor de MD / pag. 57
+        // obs: observar a resolução da questão 7 ou 8 da lista do classroom que o profesor passou
+        // ambas trabalham com o inverso modular
 }
