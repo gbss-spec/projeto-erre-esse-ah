@@ -49,8 +49,7 @@ unsigned long long int mdc(unsigned long long int a, unsigned long long int b){
 
 int main(){
 
-    int expoente;
-    unsigned long long int entrada1, entrada2; //Ao usar unsigned, esta variável expande sua capacidade de representar grandes números positivos, em detrimento de sua capacidade de representar números negativos. 
+    unsigned long long int entrada1, entrada2, expoente; //Ao usar unsigned, esta variável expande sua capacidade de representar grandes números positivos, em detrimento de sua capacidade de representar números negativos. 
 
     //Diálogo de Nicholas.
     printf("Bem vindo, filho... Há algo que queiras proteger? Conta-me sobre números interessantes e dar-te-ei trancas em que podes confiar...\n");
@@ -77,6 +76,10 @@ int main(){
                 printf("Hmmphm.. Este número não é primo... Tentas mais uma vez...\n");
                 i--;
                 }
+            else 
+            {
+                printf("Nossa! Gostei desse numero... Me fala outro para completar um par...\n");
+            }
         }
             
             
@@ -100,18 +103,18 @@ int main(){
         }//Fim do loop de leitura para entrada1 e entrada2
 
         printf("Muito bom... Agora, eu gostaria de um número que fosse primo em relação aos produto dos dois números anteriores subtraídos de 1...\n");
-        scanf("%d", &expoente);
+        scanf("%llu", &expoente);
 
         //Invocar função mdc para verificar se o expoente é primo em relação a (entrada1-1)(entrada2-1)
         while(mdc(expoente, (entrada1-1)*(entrada2-1))!=1){
 
             //Try again
             printf("Não não... este não satisfaz meu pedido... Tente outro...\n");
-            scanf("%d", &expoente);
+            scanf("%llu", &expoente);
 
 
         }
-
+        printf("Otimo! Esse numero satisfaz a condição que te pedi...\n");
 
 }
 
