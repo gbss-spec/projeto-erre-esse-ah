@@ -9,7 +9,43 @@
 */
 
 
-//Função para checar se um número n é primo
+//___________________________________Forge Elusive Key  (Aparentemente esta função funciona, mas eu ainda não a entendo ou a matemática por trás dela)
+unsigned long long int forge_elusive_key(int n, int m)
+{
+    
+    int m0 = m;
+    int y = 0, x = 1;
+
+    if (m == 1)
+        return 0;
+
+    while (n > 1) {
+        
+        
+        int q = n / m;
+        int t = m;
+
+        m = n % m;
+        n = t;
+        t = y;
+
+        y = x - q * y;
+        x = t;
+    }
+
+    if (x < 0)
+        x += m0;
+
+    return x;
+}
+
+//Obséquio, comentar código acima ^^^
+
+
+
+
+
+//__________________Função para checar se um número n é primo
 bool primo_check(unsigned long long int n){
     
     if (n<2)return 0; //Caso base: Se n é menor que 2, ele não é primo. Responder "falso".
@@ -22,7 +58,8 @@ bool primo_check(unsigned long long int n){
 
 }
 
-//Função para obter o mdc entre dois números
+
+//___________________________Função para obter o mdc entre dois números
 unsigned long long int mdc(unsigned long long int a, unsigned long long int b){
 
     //Antes de qualquer coisa, ordernar as variáveis
@@ -40,13 +77,9 @@ unsigned long long int mdc(unsigned long long int a, unsigned long long int b){
     return mdc(b, a % b); // chamada recursiva para o algoritimo de euclides
 }
 
-/*______________________________________________________________________Função Main 
-⠀     ⡄⠀⢻⡄⢠⡛⠀⢠⠀⠀⠀⠀
-⠀⠀⠀  ⠘⣧⠸⠇⠸⠇⣼⠃⠀⠀⠀⠀
-⠀⠘⠶⠶⡄⣠⣶⣿⣿⣶⣄⢠⠶⠶⠃⠀
-⠰⠶⣤⡄⣼⣿⣿⣿⣿⣿⣿⣧⢠⣤⠶⠆
-*/
 
+
+//___________________________Função Main 
 int main(){
 
     unsigned long long int entrada1, entrada2, expoente, modulus, pritave_key; //Ao usar unsigned, esta variável expande sua capacidade de representar grandes números positivos, em detrimento de sua capacidade de representar números negativos. 
@@ -126,12 +159,26 @@ int main(){
         modulus = entrada1*entrada2;
         printf("com o numeros que você me deu parece que nossa chave pública vai ser: \n( %llu, %llu)\n", modulus, expoente);
 
+
+        //Invocar função para calcular d
+        unsigned long long int private_key = forge_elusive_key(expoente, (entrada1-1)*(entrada2-1));
+
+
         printf("humhmmmm....  vamos ver agora como ficaria nossa chave privada...\n");
         printf("deixe-me calcular aqui... vamos ver...\n");
+
+
         // adcionar aqui a chave privada
         // ela é formada por 'd'
         // d deve ser o inverso modular de 'expoente mod (p-1)(q-1)'
         // fonte: aplicação a teoria do numero - slide do professor de MD / pag. 57
         // obs: observar a resolução da questão 7 ou 8 da lista do classroom que o profesor passou
         // ambas trabalham com o inverso modular
-}
+
+        //Até o presente momento eu não entendo o que devemos fazer com a chave privada. Talvez guardar num documento? Mostrar ao usuário? Não sei.  
+
+        //_________________________Escrever documento com chave pública
+
+
+        return 0;
+    }
