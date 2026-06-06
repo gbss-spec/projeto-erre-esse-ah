@@ -147,8 +147,6 @@ int main(){
 
 
         }
-        printf("Ótimo! Esse numero satisfaz a condição que te pedi...\n");
-        printf("hmmmm... agora já podemos obter nossao chave publica... Deixe-me ver aqui...\n");
         /** A chave publica é o par (n, e)
          * n é o produto p*q
          * 'e' é o expoente relativamente primo a (p-1)(q-1) que já foi dado
@@ -157,15 +155,11 @@ int main(){
 
         //Alterei a variável de "n" para modulus, para que fique mais claro do que se trata.
         modulus = entrada1*entrada2;
-        printf("com o numeros que você me deu parece que nossa chave pública vai ser: \n( %llu, %llu)\n", modulus, expoente);
 
 
         //Invocar função para calcular d
-        unsigned long long int private_key = forge_elusive_key(expoente, (entrada1-1)*(entrada2-1));
+        unsigned long long int private_key = forge_elusive_key(expoente, (entrada1-1)*(entrada2-1)); //<--------------------------------Chave privada, caso alguém esteja procurando. 
 
-
-        printf("humhmmmm....  vamos ver agora como ficaria nossa chave privada...\n");
-        printf("deixe-me calcular aqui... vamos ver...\n");
 
 
         // adcionar aqui a chave privada
@@ -178,7 +172,27 @@ int main(){
         //Até o presente momento eu não entendo o que devemos fazer com a chave privada. Talvez guardar num documento? Mostrar ao usuário? Não sei.  
 
         //_________________________Escrever documento com chave pública
+        char* filename = "The_Key.txt"; //What the hell does it do please someone explain
 
+    /* Open the specified file in write mode 'w' (wtf does it mean?)*/ 
+    FILE* fptr = fopen(filename, "w");
+
+    if(fptr == NULL)
+    {
+        printf("Error: could not open file '%s'.\n", filename);
+        return 1;
+    }
+
+    /* Engrave the Elusive Key on the document */
+    fprintf(fptr, "(%llu, %llu)\n", modulus, expoente);
+
+    /* Close the file */
+    fclose(fptr);
+
+
+    printf("Ah sim, sim... Bom! Esse numero satisfaz a condição que te pedi...\n");
+    printf("Tua chave está no pergaminho '%s'... Leve-a a Uzur e ele usará esta chave para ocultar teus segredos.  \nAdeus, meu amigo!\n", filename);
+    
 
         return 0;
     }
